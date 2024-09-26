@@ -1,7 +1,7 @@
 {
   description = "Unofficial yuzu flake";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
   };
   outputs = { nixpkgs, ... }:
   let
@@ -10,11 +10,11 @@
     pkgs = import nixpkgs {
       inherit system;
     };
-    package = pkgs.callPackage (import ./nix { });
   in
-  {
+  rec {
     packages.${system} = {
-      default = package;
+      yuzu = pkgs.callPackage ./nix { };
+      default = packages.${system}.yuzu;
     };
   };
 }

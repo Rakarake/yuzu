@@ -36,3 +36,9 @@ CMakeSettings.json
 # Windows global filetypes
 Thumbs.db
 
+# LSP
+.ccls-cache
+
+# Nix
+result
+
